@@ -1,0 +1,10 @@
+*.spec
+dist/
+build/
+test/
+.envs/
+.env/
+.venv/
+__pycache__/
+.gitconfig
+monitor.txt
