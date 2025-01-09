@@ -13,5 +13,6 @@ rm -f /var/log/apt/term.log
 rm .viminfo
 rm -rf /tmp/*
 cat /dev/null > ~/.bash_history
-
+rm /vmlinuz
+rm /initrd
 ps aux | grep podsys-lite-core

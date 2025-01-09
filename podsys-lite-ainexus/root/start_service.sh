@@ -23,13 +23,10 @@ dhcp_e=$(grep "dhcp_e" /workspace/config.yaml | cut -d ":" -f 2 | tr -d '[:space
 iso=$(grep "iso" /workspace/config.yaml | cut -d ":" -f 2 | tr -d '[:space:]')
 subnet_mask=$(get_subnet_mask ${manager_ip})
 
-if [ "${iso}" == "ubuntu-22.04.2-live-server-amd64.iso" ]; then
-    dir="u220402"
-elif [ "${iso}" == "ubuntu-22.04.5-live-server-amd64.iso" ]; then
-    dir="u220405"
-else
-    echo "iso not support"
-fi
+chmod 755 /workspace/${iso}
+mount /workspace/${iso} /iso
+cp /iso/casper/initrd* /initrd
+cp /iso/casper/vmlinuz /vmlinuz
 
 echo -e "\033[43;31m "Welcome to the podsys-lite"\033[0m"
 echo "  ____     ___    ____    ____   __   __  ____  ";
@@ -93,8 +90,8 @@ goto \${selected}
 
 :install-os
 set server http://${manager_ip}:5000/
-initrd \${server}/${dir}/initrd
-kernel \${server}/${dir}/vmlinuz initrd=initrd ip=dhcp url=\${server}workspace/${iso} autoinstall ds=nocloud-net;s=\${server}user-data/ root=/dev/ram0 cloud-config-url=/dev/null
+initrd \${server}/initrd
+kernel \${server}/vmlinuz initrd=initrd ip=dhcp url=\${server}workspace/${iso} autoinstall ds=nocloud-net;s=\${server}user-data/ root=/dev/ram0 cloud-config-url=/dev/null
 boot
 EOF
 )
