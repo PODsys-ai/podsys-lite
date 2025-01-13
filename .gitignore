@@ -7,4 +7,3 @@ test/
 .venv/
 __pycache__/
 .gitconfig
-monitor.txt
