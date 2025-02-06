@@ -5,7 +5,7 @@
 **The size of the packaged file is smaller using this method**
 ### Create container
 ``` shell
-docker run --name podsys-lite-core --privileged=true -it -p 5000:5000 -v D:/podsys-lite/podsys-lite-core:/root/podsys-lite-core  ubuntu:22.04 /bin/bash
+docker run --name podsys-lite-core --privileged=true -it  -v ${PWD}:/podsys-lite-core  ubuntu:22.04 /bin/bash
 ```
 ### install env in container
 ``` shell
@@ -16,7 +16,7 @@ apt install upx
 pip install Flask
 pip install psutil
 pip install pyinstaller
-cd /root/podsys-lite-core
+cd /podsys-lite-core
 ```
 
 ### build

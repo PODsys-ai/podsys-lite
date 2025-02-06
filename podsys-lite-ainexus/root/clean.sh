@@ -5,6 +5,7 @@ rm /workspace/log/dnsmasq.log
 
 rm -f /tftp/ipxe.cfg
 rm -f /user-data/user-data
+rm -f /kickstart/kickstart.cfg
 
 rm -f /var/log/dpkg.log
 rm -f /var/log/apt/eipp.log.xz
@@ -13,6 +14,7 @@ rm -f /var/log/apt/term.log
 rm .viminfo
 rm -rf /tmp/*
 cat /dev/null > ~/.bash_history
-rm /vmlinuz
-rm /initrd
+
+umount /iso
+
 ps aux | grep podsys-lite-core

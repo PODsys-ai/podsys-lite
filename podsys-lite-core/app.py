@@ -87,7 +87,7 @@ def download_file(filepath):
             app.config["count_vmlinuz"] += 1
         elif iso in file_path:
             app.config["count_iso"] += 1
-        elif file_path == "/user-data/user-data":
+        elif file_path == "/user-data/user-data" or file_path == "/kickstart/kickstart.cfg":
             app.config["count_userdata"] += 1
         elif file_path == "/user-data/preseed.sh":
             app.config["count_preseed"] += 1

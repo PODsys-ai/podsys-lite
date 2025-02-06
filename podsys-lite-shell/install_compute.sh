@@ -11,7 +11,7 @@ if docker ps -a --format '{{.Image}}' | grep -q "ainexus-lite:v3.0"; then
     docker rmi ainexus-lite:v3.0 >/dev/null
 fi
 
-docker import pkgs/ainexus-lite-3.0 ainexus-lite:v3.0 >/dev/null &
+docker import pkgs/ainexus-lite ainexus-lite:v3.0 >/dev/null &
 pid=$!
 while ps -p $pid >/dev/null; do
     echo -n "*"
