@@ -1,5 +1,5 @@
 generate_ipxe_cfg_ubuntu() {
-    local manager_ip==$1
+    local manager_ip=$1
     local iso=$2
     cat <<EOF
 #!ipxe
