@@ -3,18 +3,22 @@ service dnsmasq stop
 rm -f /etc/dnsmasq.conf
 rm /workspace/log/dnsmasq.log
 
+umount /iso
+
 rm -f /tftp/ipxe.cfg
 rm -f /user-data/user-data
 rm -f /kickstart/kickstart.cfg
 
-rm -f /var/log/dpkg.log
+rm -f /var/log/*.log
 rm -f /var/log/apt/eipp.log.xz
-rm -f /var/log/apt/history.log
-rm -f /var/log/apt/term.log
-rm .viminfo
-rm -rf /tmp/*
-cat /dev/null > ~/.bash_history
+rm -f /var/log/apt/*.log
 
-umount /iso
+rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+
+rm .viminfo
+rm -rf /tmp/* /var/tmp/*
+rm -rf /usr/share/doc/* /usr/share/man/* /usr/share/info/*
+
+cat /dev/null > ~/.bash_history
 
 ps aux | grep podsys-lite-core
